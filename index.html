@@ -16,6 +16,12 @@
     <header class="navbar">
         <div class="nav-container">
             <div class="nav-logo" onclick="scrollToSection('hero')">SRIKAVINESH <span class="highlight">M</span></div>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <nav class="nav-links">
                 <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero');">About</a>
                 <a href="#journey" onclick="event.preventDefault(); scrollToSection('journey');">Experience</a>
@@ -38,30 +44,9 @@
         <!-- SECTION 1: HERO -->
         <section id="hero" class="slide active">
             <div class="section-content hero-layout">
-                <div class="hero-text">
-                    <span class="badge">// MERN DEVELOPER & IoT / VR INTERN</span>
-                    <h1 class="glitch-text">SRIKAVINESH M</h1>
-                    
-                    <!-- Proof Bar Credibility Strip -->
-                    <div class="proof-bar">
-                        <div class="proof-tag"><i class="fas fa-graduation-cap"></i> ECE @ Sri Eshwar</div>
-                        <div class="proof-tag"><i class="fas fa-vr-cardboard"></i> AR/VR @ Fusion VR</div>
-                        <div class="proof-tag"><i class="fas fa-robot"></i> IoT @ Praya Labs</div>
-                        <div class="proof-tag"><i class="fas fa-trophy"></i> Createathon Runner-Up</div>
-                    </div>
-                    
-                    <p class="tagline">Crafting seamless web architectures, physical digital twin systems, and interactive spatial software.</p>
-                    
-                    <div class="hero-actions">
-                        <button class="cta-btn primary-btn" onclick="scrollToSection('works')">View Projects <i class="fas fa-arrow-right"></i></button>
-                        <button class="cta-btn secondary-btn" onclick="openResumeModal()"><i class="fas fa-file-pdf"></i> Resume Preview</button>
-                        <div class="social-links">
-                            <a href="mailto:srikavinesh.m2024ece@sece.ac.in" title="Email"><i class="fas fa-envelope"></i></a>
-                            <a href="https://www.linkedin.com/in/srikavinesh-m-903251334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/sri-067" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <span class="badge">// MERN DEVELOPER & IoT / VR INTERN</span>
+                <h1 class="glitch-text">SRIKAVINESH M</h1>
+                
                 <div class="hero-portrait">
                     <div class="frame-container">
                         <div class="frame-glow"></div>
@@ -75,10 +60,64 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Proof Bar Credibility Strip -->
+                <div class="proof-bar">
+                    <div class="proof-tag"><i class="fas fa-graduation-cap"></i> ECE @ Sri Eshwar</div>
+                    <div class="proof-tag"><i class="fas fa-vr-cardboard"></i> AR/VR @ Fusion VR</div>
+                    <div class="proof-tag"><i class="fas fa-robot"></i> IoT @ Praya Labs</div>
+                    <div class="proof-tag"><i class="fas fa-trophy"></i> Createathon Runner-Up</div>
+                </div>
+                
+                <p class="tagline">Crafting seamless web architectures, physical digital twin systems, and interactive spatial software.</p>
+                
+                <div class="hero-actions">
+                    <button class="cta-btn primary-btn" onclick="scrollToSection('works')">View Projects <i class="fas fa-arrow-right"></i></button>
+                    <button class="cta-btn secondary-btn" onclick="openResumeModal()"><i class="fas fa-file-pdf"></i> Resume Preview</button>
+                    <div class="social-links">
+                        <a href="mailto:srikavinesh.m2024ece@sece.ac.in" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/srikavinesh-m-903251334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/sri-067" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREDIBILITY IMPACT STRIP -->
+        <section id="impact" class="impact-section">
+            <div class="impact-container">
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="impact-details">
+                        <h4>2 Active Internships</h4>
+                        <p>Fusion VR & Praya Labs</p>
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-code-branch"></i></div>
+                    <div class="impact-details">
+                        <h4>5 Selected Projects</h4>
+                        <p>Web, IoT & XR systems</p>
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-terminal"></i></div>
+                    <div class="impact-details">
+                        <h4>700+ Coding Solves</h4>
+                        <p>SkillRack & LeetCode</p>
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon"><i class="fas fa-vr-cardboard"></i></div>
+                    <div class="impact-details">
+                        <h4>AR/VR & IoT Developer</h4>
+                        <p>Unity, Blender & C#</p>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <!-- SECTION 2: THE JOURNEY (Education -> Internships -> Achievements) -->
+        <!-- SECTION 2: THE JOURNEY -->
         <section id="journey" class="slide">
             <div class="section-content grid-two-col">
                 <!-- Left column: About & Education -->
@@ -147,7 +186,7 @@
             </div>
         </section>
 
-        <!-- SECTION 3: WORKS (Projects Grid) -->
+        <!-- SECTION 3: WORKS -->
         <section id="works" class="slide">
             <div class="section-content works-layout">
                 <div class="works-header">
@@ -264,7 +303,7 @@
             </div>
         </section>
 
-        <!-- SECTION 4: THE ARSENAL (Skills & Statistics) -->
+        <!-- SECTION 4: THE ARSENAL -->
         <section id="arsenal" class="slide">
             <div class="section-content grid-two-col">
                 <div class="skills-info">
@@ -306,7 +345,7 @@
                     </div>
                 </div>
                 
-                <!-- Telemetry Cards Grid -->
+                <!-- Telemetry Stats Panel (2x2 Grid) -->
                 <div class="stats-panel-new">
                     <h3 class="stats-title"><i class="fas fa-chart-line"></i> Technical Telemetry</h3>
                     <div class="stats-card-grid">
@@ -336,7 +375,7 @@
             <div class="section-content contact-layout">
                 <div class="contact-header">
                     <span class="section-num">05 /</span>
-                    <h2 class="section-title">LET'S BUILD WORTH SHIPPING</h2>
+                    <h2 class="section-title">LET'S BUILD SOMETHING WORTH SHIPPING</h2>
                 </div>
                 <div class="contact-grid">
                     <div class="contact-lead">

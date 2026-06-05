@@ -2,12 +2,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slide');
     const glowBg = document.querySelector('.glow-bg');
     const scrollProgressBar = document.getElementById('scrollProgress');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
 
-    // 1. Global Section Scroll Helper
+    // 1. Mobile Hamburger Menu Toggle
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = navToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking a link or button
+        navLinks.querySelectorAll('a, button').forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                const icon = navToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+    }
+
+    // 2. Global Section Scroll Helper
     window.scrollToSection = function(id) {
         const element = document.getElementById(id);
         if (element) {
-            // Find navbar height to offset scroll
             const navbar = document.querySelector('.navbar');
             const offset = navbar ? navbar.offsetHeight : 70;
             const bodyRect = document.body.getBoundingClientRect().top;
@@ -22,17 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 2. Top Reading Progress Indicator
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-        if (scrollProgressBar) {
-            scrollProgressBar.style.width = `${scrolled}%`;
-        }
-    });
-
-    // 3. Intersection Observer for Entering Animations, Nav Link Highlights, and Glow Transitions
+    // 3. Intersection Observer for Entering Animations, Nav Link Highlights, and Section Progress
     const glowClasses = {
         'hero': 'glow-hero',
         'journey': 'glow-journey',
@@ -41,9 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
         'initiate': 'glow-initiate'
     };
 
+    const progressPercentages = {
+        'hero': 20,
+        'journey': 40,
+        'works': 60,
+        'arsenal': 80,
+        'initiate': 100
+    };
+
     const observerOptions = {
         root: null,
-        rootMargin: '-30% 0px -40% 0px', // Trigger when section is in view focus
+        rootMargin: '-30% 0px -45% 0px', // Trigger when section is in view focus
         threshold: 0.1
     };
 
@@ -67,8 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Transition ambient glow class
                 if (glowBg && glowClasses[id]) {
-                    // Reset class and apply correct glow class
                     glowBg.className = 'glow-bg ' + glowClasses[id];
+                }
+
+                // Snap scroll progress bar to active section's percentage
+                if (scrollProgressBar && progressPercentages[id]) {
+                    scrollProgressBar.style.width = `${progressPercentages[id]}%`;
                 }
             }
         });

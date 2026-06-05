@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srikavinesh M | Interactive Storyteller</title>
+    <title>Srikavinesh M | Web, IoT & XR Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,40 +12,53 @@
     <div class="glow-bg"></div>
     <div class="noise"></div>
 
-    <!-- Global Progress Indicator -->
-    <div class="progress-container">
-        <div class="progress-bar-track">
-            <div class="progress-bar" id="progressBar"></div>
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="scrollToSection('hero')">SRIKAVINESH <span class="highlight">M</span></div>
+            <nav class="nav-links">
+                <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero');">About</a>
+                <a href="#journey" onclick="event.preventDefault(); scrollToSection('journey');">Experience</a>
+                <a href="#works" onclick="event.preventDefault(); scrollToSection('works');">Projects</a>
+                <a href="#arsenal" onclick="event.preventDefault(); scrollToSection('arsenal');">Skills</a>
+                <a href="#initiate" onclick="event.preventDefault(); scrollToSection('initiate');">Contact</a>
+                <button class="nav-resume-btn" onclick="openResumeModal()">Resume</button>
+            </nav>
         </div>
-        <div class="progress-counter">
-            <span class="active-index" id="activeIndex">01</span>
-            <span class="divider">/</span>
-            <span class="total-index">05</span>
-        </div>
+    </header>
+
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
     </div>
 
-    <!-- Navigation Arrows for Desktop -->
-    <div class="nav-arrows">
-        <button id="prevBtn" class="nav-btn" disabled><i class="fas fa-chevron-left"></i></button>
-        <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
-    </div>
-
-    <!-- Horizontal Storyboard Main Container -->
-    <main class="storyboard" id="storyboardContainer">
+    <!-- Main Container -->
+    <main class="main-layout" id="mainContainer">
         
-        <!-- SECTION 1: HERO (Intro) -->
+        <!-- SECTION 1: HERO -->
         <section id="hero" class="slide active">
             <div class="section-content hero-layout">
                 <div class="hero-text">
                     <span class="badge">// MERN DEVELOPER & IoT / VR INTERN</span>
-                    <h1 class="glitch-text">SRIKAVINESH <span class="highlight">M</span></h1>
-                    <p class="tagline">Crafting seamless full-stack web applications and immersive cyber-physical systems with precision.</p>
+                    <h1 class="glitch-text">SRIKAVINESH M</h1>
+                    
+                    <!-- Proof Bar Credibility Strip -->
+                    <div class="proof-bar">
+                        <div class="proof-tag"><i class="fas fa-graduation-cap"></i> ECE @ Sri Eshwar</div>
+                        <div class="proof-tag"><i class="fas fa-vr-cardboard"></i> AR/VR @ Fusion VR</div>
+                        <div class="proof-tag"><i class="fas fa-robot"></i> IoT @ Praya Labs</div>
+                        <div class="proof-tag"><i class="fas fa-trophy"></i> Createathon Runner-Up</div>
+                    </div>
+                    
+                    <p class="tagline">Crafting seamless web architectures, physical digital twin systems, and interactive spatial software.</p>
+                    
                     <div class="hero-actions">
-                        <button class="cta-btn primary-btn" onclick="scrollToSlide(1)">Explore Journey <i class="fas fa-arrow-right"></i></button>
+                        <button class="cta-btn primary-btn" onclick="scrollToSection('works')">View Projects <i class="fas fa-arrow-right"></i></button>
+                        <button class="cta-btn secondary-btn" onclick="openResumeModal()"><i class="fas fa-file-pdf"></i> Resume Preview</button>
                         <div class="social-links">
                             <a href="mailto:srikavinesh.m2024ece@sece.ac.in" title="Email"><i class="fas fa-envelope"></i></a>
                             <a href="https://www.linkedin.com/in/srikavinesh-m-903251334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/sri-067" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -64,43 +77,34 @@
                 </div>
             </div>
         </section>
-
-        <!-- SECTION 2: THE JOURNEY (Experience & Education) -->
+        
+        <!-- SECTION 2: THE JOURNEY (Education -> Internships -> Achievements) -->
         <section id="journey" class="slide">
             <div class="section-content grid-two-col">
-                <div class="journey-info">
-                    <span class="section-num">02 /</span>
-                    <h2 class="section-title">THE JOURNEY</h2>
-                    <p class="about-desc">
-                        A forward-thinking B.E Electronics and Communication Engineering student at Sri Eshwar College of Engineering. 
-                        I bridge the gap between web architecture, physical devices, and spatial technologies to engineer robust solutions.
-                    </p>
-                    <div class="edu-cards-container" style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
-                        <div class="edu-card">
-                            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-                            <div class="edu-details">
-                                <h3>B.E ECE / Sri Eshwar</h3>
-                                <p class="edu-sub">CGPA: 7.1 • Sri Eshwar College of Engineering</p>
-                            </div>
-                        </div>
-                        <div class="edu-card">
-                            <div class="edu-icon" style="color: var(--secondary); background: var(--secondary-glow); border-color: var(--secondary);"><i class="fas fa-trophy"></i></div>
-                            <div class="edu-details">
-                                <h3>2nd Place / Createathon '24</h3>
-                                <p class="edu-sub">Web Hackathon • Sri Eshwar College of Engineering</p>
-                            </div>
-                        </div>
-                        <div class="edu-card">
-                            <div class="edu-icon" style="color: var(--accent); background: rgba(255, 77, 90, 0.05); border-color: var(--accent);"><i class="fas fa-lightbulb"></i></div>
-                            <div class="edu-details">
-                                <h3>Tech-Ideathon 2026</h3>
-                                <p class="edu-sub">Participation • VIT Mauritius & IoES</p>
-                            </div>
+                <!-- Left column: About & Education -->
+                <div class="journey-left">
+                    <div>
+                        <span class="section-num">02 /</span>
+                        <h2 class="section-title">THE JOURNEY</h2>
+                        <p class="about-desc">
+                            A forward-thinking B.E Electronics and Communication Engineering student at Sri Eshwar College of Engineering. 
+                            I bridge the gap between web architecture, physical devices, and spatial technologies to engineer robust solutions.
+                        </p>
+                    </div>
+                    
+                    <h3 class="timeline-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="edu-card">
+                        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="edu-details">
+                            <h3>B.E ECE / Sri Eshwar</h3>
+                            <p class="edu-sub">CGPA: 7.1 • Sri Eshwar College of Engineering (2022 - 2026)</p>
                         </div>
                     </div>
                 </div>
-                <div class="journey-timeline">
-                    <h3 class="timeline-title"><i class="fas fa-briefcase"></i> Internships</h3>
+
+                <!-- Right column: Experience & Achievements -->
+                <div class="journey-right">
+                    <h3 class="timeline-title"><i class="fas fa-briefcase"></i> Experience</h3>
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
@@ -121,11 +125,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <h3 class="timeline-title" style="margin-top: 1.5rem;"><i class="fas fa-trophy"></i> Achievements</h3>
+                    <div class="achievements-list">
+                        <div class="edu-card">
+                            <div class="edu-icon achievement-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="edu-details">
+                                <h3>2nd Place / Createathon '24</h3>
+                                <p class="edu-sub">Web Hackathon • Sri Eshwar College of Engineering</p>
+                            </div>
+                        </div>
+                        <div class="edu-card">
+                            <div class="edu-icon ideathon-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="edu-details">
+                                <h3>Tech-Ideathon 2026</h3>
+                                <p class="edu-sub">Participation • VIT Mauritius & IoES</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: WORKS (Projects Carousel) -->
+        <!-- SECTION 3: WORKS (Projects Grid) -->
         <section id="works" class="slide">
             <div class="section-content works-layout">
                 <div class="works-header">
@@ -135,89 +157,107 @@
                     </div>
                     <p class="works-subtitle">A collection of MERN stack platforms, full-stack software, and Unity games.</p>
                 </div>
-                <div class="projects-carousel">
-                    <!-- Project 1 -->
-                    <div class="project-slide">
-                        <div class="proj-num">01</div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1: Healthcare Portal -->
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="assets/projects/healthcare.png" alt="Healthcare Portal Mockup" class="project-img">
+                        </div>
                         <div class="proj-body">
                             <h3>Healthcare Portal</h3>
-                            <p>An enterprise MERN stack portal designed to streamline patient records, doctor scheduling, and telehealth channels securely.</p>
+                            <p>MERN stack telehealth portal streamlining patient records and medical scheduling.</p>
                             <div class="proj-tags">
-                                <span class="tag">MongoDB</span>
-                                <span class="tag">Express</span>
                                 <span class="tag">React</span>
                                 <span class="tag">Node.js</span>
+                                <span class="tag">Express</span>
+                                <span class="tag">MongoDB</span>
                             </div>
                         </div>
-                        <div class="proj-footer">
-                            <span class="view-link">View Case Study <i class="fas fa-arrow-right"></i></span>
+                        <div class="proj-actions">
+                            <a href="#" class="proj-btn demo-btn" onclick="alert('Demo Link Coming Soon!'); return false;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/sri-067" target="_blank" class="proj-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="project-slide">
-                        <div class="proj-num">02</div>
+                    
+                    <!-- Project 2: Student ID QR -->
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="assets/projects/student_qr.png" alt="Student ID QR Mockup" class="project-img">
+                        </div>
                         <div class="proj-body">
                             <h3>Student ID QR</h3>
-                            <p>A customized MERN identity system utilizing QR generation to manage campus entry, access logs, and student status tracking.</p>
+                            <p>MERN identity scanner utilizing instant QR codes for campus logging and access tracking.</p>
                             <div class="proj-tags">
-                                <span class="tag">Node.js</span>
                                 <span class="tag">React</span>
-                                <span class="tag">QR Engine</span>
+                                <span class="tag">Node.js</span>
                                 <span class="tag">Express</span>
+                                <span class="tag">QR Engine</span>
                             </div>
                         </div>
-                        <div class="proj-footer">
-                            <span class="view-link">View Case Study <i class="fas fa-arrow-right"></i></span>
+                        <div class="proj-actions">
+                            <a href="#" class="proj-btn demo-btn" onclick="alert('Demo Link Coming Soon!'); return false;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/sri-067" target="_blank" class="proj-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
-                    <!-- Project 3 -->
-                    <div class="project-slide">
-                        <div class="proj-num">03</div>
+                    
+                    <!-- Project 3: Lost & Found -->
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="assets/projects/lost_found.png" alt="Lost & Found Mockup" class="project-img">
+                        </div>
                         <div class="proj-body">
                             <h3>Lost & Found</h3>
-                            <p>A community-focused reporting portal for campus lost objects, utilizing geolocation logs and real-time user notification.</p>
+                            <p>Community campus network mapping lost items with real-time locator pins.</p>
                             <div class="proj-tags">
                                 <span class="tag">React</span>
                                 <span class="tag">Firebase</span>
                                 <span class="tag">GeoMap</span>
-                                <span class="tag">CSS Grid</span>
                             </div>
                         </div>
-                        <div class="proj-footer">
-                            <span class="view-link">View Case Study <i class="fas fa-arrow-right"></i></span>
+                        <div class="proj-actions">
+                            <a href="#" class="proj-btn demo-btn" onclick="alert('Demo Link Coming Soon!'); return false;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/sri-067" target="_blank" class="proj-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
-                    <div class="project-slide">
-                        <div class="proj-num">04</div>
+                    
+                    <!-- Project 4: SmartRoute -->
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="assets/projects/smartroute.png" alt="SmartRoute Mockup" class="project-img">
+                        </div>
                         <div class="proj-body">
                             <h3>SmartRoute</h3>
-                            <p>An algorithmic logistics helper designed to optimize transport pathing and delivery times utilizing pathfinding AI.</p>
+                            <p>Algorithmic pathfinder AI designed to optimize transport logistics and schedules.</p>
                             <div class="proj-tags">
                                 <span class="tag">Python</span>
-                                <span class="tag">MERN</span>
-                                <span class="tag">Pathfinding</span>
+                                <span class="tag">AI Router</span>
                                 <span class="tag">APIs</span>
                             </div>
                         </div>
-                        <div class="proj-footer">
-                            <span class="view-link">View Case Study <i class="fas fa-arrow-right"></i></span>
+                        <div class="proj-actions">
+                            <a href="#" class="proj-btn demo-btn" onclick="alert('Demo Link Coming Soon!'); return false;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/sri-067" target="_blank" class="proj-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
-                    <!-- Project 5 -->
-                    <div class="project-slide">
-                        <div class="proj-num">05</div>
+                    
+                    <!-- Project 5: Global Game Jam '26 -->
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img src="assets/projects/gamejam.png" alt="Global Game Jam '26 Mockup" class="project-img">
+                        </div>
                         <div class="proj-body">
                             <h3>Global Game Jam '26</h3>
-                            <p>A 2D atmospheric puzzle-platformer game developed in Unity for Global Game Jam 2026, featuring physics mechanics.</p>
+                            <p>2D atmospheric puzzle-platformer Unity game with custom mechanics and lighting.</p>
                             <div class="proj-tags">
                                 <span class="tag">Unity</span>
                                 <span class="tag">C#</span>
                                 <span class="tag">2D Physics</span>
-                                <span class="tag">Game Dev</span>
                             </div>
                         </div>
-                        <div class="proj-footer">
-                            <span class="view-link">View Project <i class="fas fa-arrow-right"></i></span>
+                        <div class="proj-actions">
+                            <a href="#" class="proj-btn demo-btn" onclick="alert('Demo Link Coming Soon!'); return false;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/sri-067" target="_blank" class="proj-btn github-btn"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -230,50 +270,61 @@
                 <div class="skills-info">
                     <span class="section-num">04 /</span>
                     <h2 class="section-title">THE ARSENAL</h2>
-                    <p class="about-desc">Technologies, frameworks, and programming languages that power my solutions.</p>
                     
                     <div class="skills-categories">
                         <div class="skill-cat">
-                            <h4>Development</h4>
+                            <h4>Frontend & UX</h4>
                             <div class="skill-pills">
                                 <span class="pill">React</span>
+                                <span class="pill">Next.js</span>
+                                <span class="pill">TailwindCSS</span>
+                                <span class="pill">HTML5 / CSS3</span>
+                                <span class="pill">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="skill-cat">
+                            <h4>Backend & IoT</h4>
+                            <div class="skill-pills">
                                 <span class="pill">Node.js</span>
                                 <span class="pill">Express</span>
                                 <span class="pill">MongoDB</span>
                                 <span class="pill">Firebase</span>
-                                <span class="pill">Unity</span>
-                                <span class="pill">Blender</span>
+                                <span class="pill">MySQL</span>
                             </div>
                         </div>
                         <div class="skill-cat">
-                            <h4>Languages</h4>
+                            <h4>3D/XR & Game Dev</h4>
                             <div class="skill-pills">
-                                <span class="pill">C++</span>
-                                <span class="pill">Java</span>
-                                <span class="pill">Python</span>
-                                <span class="pill">JavaScript</span>
+                                <span class="pill">Unity</span>
+                                <span class="pill">Blender</span>
                                 <span class="pill">C#</span>
-                                <span class="pill">MySQL</span>
+                                <span class="pill">Python</span>
+                                <span class="pill">Java</span>
+                                <span class="pill">Git / GitHub</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="stats-panel">
-                    <h3 class="stats-title"><i class="fas fa-chart-line"></i> Coding Telemetry</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number">700+</span>
-                            <span class="stat-label">SkillRack Solved</span>
-                            <div class="stat-progress-container">
-                                <div class="stat-progress-bar" style="width: 85%;"></div>
-                            </div>
+                
+                <!-- Telemetry Cards Grid -->
+                <div class="stats-panel-new">
+                    <h3 class="stats-title"><i class="fas fa-chart-line"></i> Technical Telemetry</h3>
+                    <div class="stats-card-grid">
+                        <div class="stat-strip-card">
+                            <span class="stat-card-number">2</span>
+                            <span class="stat-card-label">Internships</span>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-number">30+</span>
-                            <span class="stat-label">LeetCode Solved</span>
-                            <div class="stat-progress-container">
-                                <div class="stat-progress-bar" style="width: 45%;"></div>
-                            </div>
+                        <div class="stat-strip-card">
+                            <span class="stat-card-number">5</span>
+                            <span class="stat-card-label">Selected Works</span>
+                        </div>
+                        <div class="stat-strip-card">
+                            <span class="stat-card-number">700+</span>
+                            <span class="stat-card-label">Problems Solved</span>
+                        </div>
+                        <div class="stat-strip-card">
+                            <span class="stat-card-number">30+</span>
+                            <span class="stat-card-label">LeetCode Solves</span>
                         </div>
                     </div>
                 </div>
@@ -285,12 +336,13 @@
             <div class="section-content contact-layout">
                 <div class="contact-header">
                     <span class="section-num">05 /</span>
-                    <h2 class="section-title">INITIATE CONNECTION</h2>
+                    <h2 class="section-title">LET'S BUILD WORTH SHIPPING</h2>
                 </div>
                 <div class="contact-grid">
                     <div class="contact-lead">
-                        <h3>LET'S BUILD SOMETHING UNIQUE</h3>
-                        <p>Currently open to full-stack roles, IoT collaborations, and immersive design projects.</p>
+                        <h3>LET'S WORK TOGETHER</h3>
+                        <p>Available for Internships & Collaborations. Currently open to full-stack developer roles, IoT experiments, and AR/VR spatial engineering.</p>
+                        
                         <div class="contact-details">
                             <a href="mailto:srikavinesh.m2024ece@sece.ac.in" class="contact-item">
                                 <i class="fas fa-envelope"></i>
@@ -301,12 +353,25 @@
                                 <span>+91 7397157443</span>
                             </a>
                         </div>
+
+                        <!-- Dedicated Resume Portal Card -->
+                        <div class="resume-portal-card">
+                            <div class="resume-portal-info">
+                                <h4><i class="far fa-file-pdf"></i> Resume / CV</h4>
+                                <p>1 Page PDF • Updated June 2026</p>
+                            </div>
+                            <div class="resume-portal-actions">
+                                <button class="cta-btn primary-btn" onclick="openResumeModal()"><i class="fas fa-eye"></i> Preview</button>
+                                <a href="assets/resume.pdf" download class="cta-btn secondary-btn"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="contact-buttons">
                         <a href="https://www.linkedin.com/in/srikavinesh-m-903251334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-btn linkedin">
                             <i class="fab fa-linkedin-in"></i> Connect on LinkedIn
                         </a>
-                        <a href="https://github.com" target="_blank" class="contact-btn github">
+                        <a href="https://github.com/sri-067" target="_blank" class="contact-btn github">
                             <i class="fab fa-github"></i> View GitHub Profile
                         </a>
                         <a href="tel:7397157443" class="contact-btn call">
@@ -314,13 +379,55 @@
                         </a>
                     </div>
                 </div>
+                
                 <div class="contact-footer">
                     <p>© 2026 Srikavinesh M. Designed with precision.</p>
                 </div>
             </div>
         </section>
-
     </main>
+
+    <!-- Resume Preview Modal -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeResumeModal()">&times;</span>
+            <div class="modal-header">
+                <h2>SRIKAVINESH M - RESUME</h2>
+                <div class="modal-actions" style="margin-right: 3rem;">
+                    <a href="assets/resume.pdf" download class="cta-btn primary-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; text-decoration: none;"><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Simulating a beautiful resume layout inside the modal -->
+                <div class="resume-preview-sheet">
+                    <header class="resume-header">
+                        <h1>SRIKAVINESH M</h1>
+                        <p style="color: var(--accent); margin-top: 0.5rem;">srikavinesh.m2024ece@sece.ac.in | +91 7397157443</p>
+                    </header>
+                    <section class="resume-section">
+                        <h3>EDUCATION</h3>
+                        <p><strong>B.E. Electronics and Communication Engineering</strong> (CGPA: 7.1)</p>
+                        <p style="color: var(--text-dim); font-size: 0.8rem;">Sri Eshwar College of Engineering, Coimbatore (2022 - 2026)</p>
+                    </section>
+                    <section class="resume-section">
+                        <h3>INTERNSHIPS</h3>
+                        <p><strong>Digital Twin Intern</strong> - Praya Labs (2026 - Present)</p>
+                        <p style="color: var(--text-dim); font-size: 0.85rem; margin-left: 1rem;">Building interactive 3D digital twin models and simulations using Unity and Blender for IoT ecosystems.</p>
+                        <p style="margin-top: 0.5rem;"><strong>AR/VR Developer Intern</strong> - Fusion VR (2026 - Present)</p>
+                        <p style="color: var(--text-dim); font-size: 0.85rem; margin-left: 1rem;">Developing immersive virtual reality games, designing 3D environmental assets using Blender.</p>
+                    </section>
+                    <section class="resume-section">
+                        <h3>PROJECTS</h3>
+                        <p><strong>Healthcare Portal</strong> | MERN Stack platform for medical telemetry.</p>
+                        <p><strong>Student ID QR</strong> | Campus identity scanning service using MERN & QR.</p>
+                        <p><strong>Lost & Found</strong>| Campus community reporting network.</p>
+                        <p><strong>SmartRoute</strong> | Algorithmic pathfinder AI for logistics.</p>
+                        <p><strong>Global Game Jam '26</strong> | 2D atmospheric puzzle-platformer in Unity.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

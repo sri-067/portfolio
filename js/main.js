@@ -1,109 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('storyboardContainer');
     const slides = document.querySelectorAll('.slide');
-    const activeIndexEl = document.getElementById('activeIndex');
-    const progressBar = document.getElementById('progressBar');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     const glowBg = document.querySelector('.glow-bg');
+    const scrollProgressBar = document.getElementById('scrollProgress');
 
-    // 1. Translate Vertical Scroll to Horizontal Scroll
-    container.addEventListener('wheel', (e) => {
-        if (window.innerWidth > 768) {
-            e.preventDefault();
-            container.scrollLeft += e.deltaY;
+    // 1. Global Section Scroll Helper
+    window.scrollToSection = function(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            // Find navbar height to offset scroll
+            const navbar = document.querySelector('.navbar');
+            const offset = navbar ? navbar.offsetHeight : 70;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
-    }, { passive: false });
+    };
 
-    // 2. Scroll to Specific Slide (exposed globally)
-    function scrollToSlide(index) {
-        const width = container.clientWidth;
-        container.scrollTo({
-            left: index * width,
-            behavior: 'smooth'
-        });
-    }
-    window.scrollToSlide = scrollToSlide;
-
-    // 3. Navigation Controls Clicking
-    prevBtn.addEventListener('click', () => {
-        const width = container.clientWidth;
-        const currentIndex = Math.round(container.scrollLeft / width);
-        if (currentIndex > 0) {
-            scrollToSlide(currentIndex - 1);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        const width = container.clientWidth;
-        const currentIndex = Math.round(container.scrollLeft / width);
-        if (currentIndex < slides.length - 1) {
-            scrollToSlide(currentIndex + 1);
+    // 2. Top Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        if (scrollProgressBar) {
+            scrollProgressBar.style.width = `${scrolled}%`;
         }
     });
 
-    // 4. Update Scroll State (Active slide, Indicators, Buttons)
-    function updateActiveState() {
-        const scrollLeft = container.scrollLeft;
-        const width = container.clientWidth;
-        const currentIndex = Math.round(scrollLeft / width);
+    // 3. Intersection Observer for Entering Animations, Nav Link Highlights, and Glow Transitions
+    const glowClasses = {
+        'hero': 'glow-hero',
+        'journey': 'glow-journey',
+        'works': 'glow-works',
+        'arsenal': 'glow-arsenal',
+        'initiate': 'glow-initiate'
+    };
 
-        // Update active slide class to trigger entry animations
-        slides.forEach((slide, idx) => {
-            if (idx === currentIndex) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
+    const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -40% 0px', // Trigger when section is in view focus
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Add active class for transition animations
+                entry.target.classList.add('active');
+
+                // Highlight correct navbar link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === `#${id}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Transition ambient glow class
+                if (glowBg && glowClasses[id]) {
+                    // Reset class and apply correct glow class
+                    glowBg.className = 'glow-bg ' + glowClasses[id];
+                }
             }
         });
+    }, observerOptions);
 
-        // Update indicator counter (01 / 05)
-        if (activeIndexEl) {
-            activeIndexEl.textContent = String(currentIndex + 1).padStart(2, '0');
-        }
+    slides.forEach(slide => {
+        observer.observe(slide);
+    });
 
-        // Update bottom progress bar width
-        if (progressBar) {
-            const progressPercent = ((currentIndex + 1) / slides.length) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-        }
-
-        // Enable/Disable arrow navigation buttons
-        if (prevBtn && nextBtn) {
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex === slides.length - 1;
-        }
-    }
-
-    container.addEventListener('scroll', updateActiveState);
-    window.addEventListener('resize', updateActiveState);
-
-    // Initial load call to set indicators correctly
-    updateActiveState();
-
-    // 5. Ambient Glowing Parallax Background Effect
+    // 4. Parallax Mouse Glow Effect
     document.addEventListener('mousemove', (e) => {
         if (glowBg) {
-            const xOffset = (e.clientX / window.innerWidth - 0.5) * 35;
-            const yOffset = (e.clientY / window.innerHeight - 0.5) * 35;
+            const xOffset = (e.clientX / window.innerWidth - 0.5) * 40;
+            const yOffset = (e.clientY / window.innerHeight - 0.5) * 40;
             glowBg.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
         }
     });
 
-    // 6. Direct Wheel Scrolling inside Projects Carousel
-    const projectsCarousel = document.querySelector('.projects-carousel');
-    if (projectsCarousel) {
-        projectsCarousel.addEventListener('wheel', (e) => {
-            if (window.innerWidth > 768) {
-                const canScrollLeft = projectsCarousel.scrollLeft > 0;
-                const canScrollRight = projectsCarousel.scrollLeft < (projectsCarousel.scrollWidth - projectsCarousel.clientWidth);
-                
-                // If the carousel can scroll in the requested direction, prevent main container scroll
-                if ((e.deltaY > 0 && canScrollRight) || (e.deltaY < 0 && canScrollLeft)) {
-                    e.stopPropagation();
-                    projectsCarousel.scrollLeft += e.deltaY;
-                }
-            }
-        }, { passive: false });
-    }
+    // 5. Resume Modal Controls
+    window.openResumeModal = function() {
+        const modal = document.getElementById('resumeModal');
+        if (modal) modal.classList.add('show');
+    };
+
+    window.closeResumeModal = function() {
+        const modal = document.getElementById('resumeModal');
+        if (modal) modal.classList.remove('show');
+    };
 });

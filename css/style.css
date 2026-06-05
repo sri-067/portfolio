@@ -964,6 +964,8 @@ body {
 
 @media (max-width: 768px) {
     html, body {
+        height: auto;
+        min-height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
         max-width: 100%;
@@ -983,7 +985,7 @@ body {
         height: auto;
         min-height: 100vh;
         scroll-snap-align: none;
-        padding: 4rem 1.25rem;
+        padding: 4.5rem 1.25rem;
         display: block;
     }
 
@@ -1062,6 +1064,17 @@ body {
     }
 
     /* Projects Mobile */
+    .works-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .works-subtitle {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
     .projects-carousel {
         flex-direction: column;
         overflow-x: visible;

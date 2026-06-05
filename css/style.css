@@ -597,7 +597,6 @@ body {
     font-size: 3rem;
     margin-bottom: 2rem;
     font-weight: 800;
-    white-space: nowrap;
 }
 
 .about-desc {
@@ -1405,14 +1404,19 @@ body {
     .hero-layout .badge { order: 1; }
     .hero-layout .glitch-text { 
         order: 2; 
-        font-size: clamp(2.3rem, 9.5vw, 3.2rem);
-        line-height: 1.1;
-        letter-spacing: -1px;
+        font-size: clamp(1.5rem, 7.8vw, 2.5rem);
+        line-height: 1.0;
+        letter-spacing: -1.5px;
+        white-space: nowrap;
     }
     .hero-layout .hero-portrait { order: 3; margin: 0.5rem 0; }
     .hero-layout .proof-bar { order: 4; }
     .hero-layout .tagline { order: 5; font-size: 1.1rem; }
     .hero-layout .hero-actions { order: 6; }
+
+    .hide-mobile {
+        display: none;
+    }
 
     .tagline {
         margin: 0.5rem auto 0 auto;

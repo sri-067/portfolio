@@ -963,9 +963,10 @@ body {
 }
 
 @media (max-width: 768px) {
-    body {
+    html, body {
         overflow-y: auto;
         overflow-x: hidden;
+        max-width: 100%;
     }
 
     .storyboard {
@@ -982,7 +983,7 @@ body {
         height: auto;
         min-height: 100vh;
         scroll-snap-align: none;
-        padding: 5rem 1.5rem;
+        padding: 4rem 1.25rem;
         display: block;
     }
 
@@ -1004,7 +1005,7 @@ body {
     /* Hero Mobile */
     .hero-layout {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
         text-align: center;
     }
 
@@ -1013,7 +1014,13 @@ body {
     }
 
     .glitch-text {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        line-height: 1.1;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+        margin: 0 auto;
     }
 
     .hero-actions {
@@ -1027,14 +1034,31 @@ body {
         justify-content: center;
     }
 
+    .frame-container {
+        max-width: 270px;
+        height: 320px;
+        margin: 0 auto;
+    }
+
     /* Grid columns collapsing */
     .grid-two-col {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3rem;
+    }
+
+    .journey-timeline, .stats-panel {
+        padding: 1.5rem;
+        border-radius: 1.75rem;
+    }
+
+    .edu-card {
+        padding: 1.25rem;
+        border-radius: 1.25rem;
     }
 
     .timeline-title, .stats-title {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
+        font-size: 1.3rem;
     }
 
     /* Projects Mobile */
@@ -1042,23 +1066,59 @@ body {
         flex-direction: column;
         overflow-x: visible;
         padding-bottom: 0;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .project-slide {
         flex: 0 0 auto;
         width: 100%;
         height: auto;
-        min-height: 280px;
+        min-height: 260px;
+        padding: 1.75rem;
+        border-radius: 1.5rem;
+    }
+
+    .proj-body h3 {
+        font-size: 1.25rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
     }
 
     /* Contact Mobile */
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .contact-lead h3 {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
+    }
+
+    .contact-item {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    .contact-item span {
+        word-break: break-all;
+        white-space: normal;
+    }
+
+    .contact-btn {
+        padding: 1rem 1.5rem;
+        border-radius: 1.25rem;
+        font-size: 0.95rem;
     }
 }
